@@ -8,6 +8,10 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+
+import com.example.firebaseexample.factory.ViewModelFactory;
+import com.google.firebase.FirebaseApp;
 
 public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity {
     VM viewModel;
@@ -27,7 +31,9 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = ViewModelProviders.of(this).get(vm);
+        FirebaseApp.initializeApp(this);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        viewModel = ViewModelProviders.of(this, new ViewModelFactory(this)).get(vm);
         binding = DataBindingUtil.setContentView(this, layout);
     }
 

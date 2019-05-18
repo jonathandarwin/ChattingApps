@@ -9,6 +9,7 @@ import com.example.firebaseexample.R;
 import com.example.firebaseexample.app.signup.SignUpActivity;
 import com.example.firebaseexample.common.BaseActivity;
 import com.example.firebaseexample.databinding.LoginActivityBinding;
+import com.example.firebaseexample.model.User;
 
 public class LoginActivity extends BaseActivity<LoginActivityBinding, LoginViewModel>
             implements View.OnClickListener{
@@ -21,6 +22,7 @@ public class LoginActivity extends BaseActivity<LoginActivityBinding, LoginViewM
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setListener();
+        getBinding().setViewModel(new User());
     }
 
     private void setListener(){
@@ -31,7 +33,7 @@ public class LoginActivity extends BaseActivity<LoginActivityBinding, LoginViewM
     @Override
     public void onClick(View v) {
         if(v.equals(getBinding().btnLogin)){
-
+            User user = getBinding().getViewModel();
         }
         else if(v.equals(getBinding().txtSignup)){
             gotoSignupIntent();
