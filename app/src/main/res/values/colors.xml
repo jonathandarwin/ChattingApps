@@ -7,4 +7,5 @@
     <color name="colorBlack">#000</color>
     <color name="colorBackground">#006A4E</color>
     <color name="colorBrown">#A4A4A4</color>
+    <color name="colorBackgroundChatGreen">#4CBB17</color>
 </resources>

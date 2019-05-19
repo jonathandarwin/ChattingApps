@@ -9,6 +9,7 @@ public class Chat extends BaseObservable {
     protected String email;
     protected String name;
     protected String message;
+    protected int color;
 
     @Bindable
     public String getEmail() {

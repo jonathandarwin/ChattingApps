@@ -18,6 +18,8 @@
         </activity>
 
         <activity android:name=".app.signup.SignUpActivity"/>
+
+        <activity android:name=".app.chat.ChatActivity"/>
     </application>
 
 </manifest>
