@@ -27,7 +27,7 @@ public class ChatActivity extends BaseActivity<ChatActivityBinding, ChatViewMode
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initAdapter;
+        initAdapter();
         setListener();
         getBinding().setViewModel(new Chat());
     }
@@ -37,7 +37,7 @@ public class ChatActivity extends BaseActivity<ChatActivityBinding, ChatViewMode
         if(v.equals(getBinding().btnSend)){
             Chat chat = getBinding().getViewModel();
             if(getViewModel().insertChat(chat)){
-                
+
             }
             else{
                 Toast.makeText(this, "Error. Please try again", Toast.LENGTH_SHORT).show();
