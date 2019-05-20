@@ -6,10 +6,13 @@ import android.databinding.Bindable;
 import com.example.firebaseexample.BR;
 
 public class Chat extends BaseObservable {
+
+    public final static int RIGHT = 1;
+    public final static int LEFT = 2;
+
     protected String email;
     protected String name;
     protected String message;
-    protected int color;
 
     @Bindable
     public String getEmail() {

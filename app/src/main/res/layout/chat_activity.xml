@@ -11,14 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
+            android:id="@+id/llChat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/llMessage"
-            android:padding="10dp"
+            android:orientation="vertical"
             >
-        </android.support.v7.widget.RecyclerView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llMessage"

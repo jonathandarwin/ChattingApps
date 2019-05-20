@@ -7,6 +7,8 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.example.firebaseexample.app.chat.ChatActivity;
+import com.example.firebaseexample.app.chat.ChatViewModel;
 import com.example.firebaseexample.app.login.LoginActivity;
 import com.example.firebaseexample.app.login.LoginViewModel;
 import com.example.firebaseexample.app.signup.SignUpActivity;
@@ -28,6 +30,9 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
         }
         if(context instanceof SignUpActivity){
             return (T) new SignUpViewModel(context);
+        }
+        if(context instanceof ChatActivity){
+            return (T) new ChatViewModel(context);
         }
         return null;
     }

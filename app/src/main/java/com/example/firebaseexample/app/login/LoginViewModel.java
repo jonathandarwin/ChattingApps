@@ -9,6 +9,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.example.firebaseexample.common.APIHandler;
+import com.example.firebaseexample.model.SESSION;
 import com.example.firebaseexample.model.User;
 import com.example.firebaseexample.repository.UserRepository;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +33,9 @@ public class LoginViewModel extends ViewModel {
                 for(DataSnapshot item : dataSnapshot.getChildren()){
                     User data = item.getValue(User.class);
                     if(data.getPassword().equals(user.getPassword())){
+                        SESSION.email = data.getEmail();
+                        SESSION.name = data.getName();
+                        SESSION.password = data.getPassword();
                         bool = true;
                     }
                     else{

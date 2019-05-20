@@ -12,6 +12,7 @@ import com.example.firebaseexample.app.chat.ChatActivity;
 import com.example.firebaseexample.app.signup.SignUpActivity;
 import com.example.firebaseexample.common.BaseActivity;
 import com.example.firebaseexample.databinding.LoginActivityBinding;
+import com.example.firebaseexample.model.SESSION;
 import com.example.firebaseexample.model.User;
 
 public class LoginActivity extends BaseActivity<LoginActivityBinding, LoginViewModel>
@@ -36,7 +37,7 @@ public class LoginActivity extends BaseActivity<LoginActivityBinding, LoginViewM
     @Override
     public void onClick(View v) {
         if(v.equals(getBinding().btnLogin)){
-            User user = getBinding().getViewModel();
+            final User user = getBinding().getViewModel();
             getViewModel().getUser(user).observe(this, new Observer<Boolean>() {
                 @Override
                 public void onChanged(@Nullable Boolean aBoolean) {

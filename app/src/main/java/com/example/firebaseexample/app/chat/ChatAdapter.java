@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -44,7 +45,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        if(listChat.get(i).getEmail().equals(SESSION.email)){
+        if(i == Chat.RIGHT){
             ChatItemRightBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.chat_item_right, viewGroup, false);
             return new RightViewHolder(binding);
         }
@@ -68,5 +69,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @Override
     public int getItemCount() {
         return listChat.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return listChat.get(position).getEmail().equals(SESSION.email) ? Chat.RIGHT : Chat.LEFT;
     }
 }
