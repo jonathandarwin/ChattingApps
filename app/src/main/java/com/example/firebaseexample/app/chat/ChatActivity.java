@@ -9,14 +9,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.firebaseexample.R;
 import com.example.firebaseexample.common.BaseActivity;
 import com.example.firebaseexample.databinding.ChatActivityBinding;
 import com.example.firebaseexample.model.Chat;
 import com.example.firebaseexample.model.SESSION;
+import com.google.android.gms.common.api.Response;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChatActivity extends BaseActivity<ChatActivityBinding, ChatViewModel>
             implements View.OnClickListener{
@@ -33,6 +42,7 @@ public class ChatActivity extends BaseActivity<ChatActivityBinding, ChatViewMode
         super.onCreate(savedInstanceState);
         initAdapter();
         setListener();
+        initTopic();
         getBinding().setViewModel(new Chat());
         getViewModel().observeMessage().observe(this, new Observer<List<Chat>>() {
             @Override
@@ -53,6 +63,7 @@ public class ChatActivity extends BaseActivity<ChatActivityBinding, ChatViewMode
         if(v.equals(getBinding().btnSend)){
             Chat chat = getBinding().getViewModel();
             if(getViewModel().insertChat(chat)){
+                getViewModel().sendNotification(chat);
                 // RESET
                 getBinding().setViewModel(new Chat());
             }
@@ -72,5 +83,9 @@ public class ChatActivity extends BaseActivity<ChatActivityBinding, ChatViewMode
         getBinding().recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getBinding().recyclerView.setHasFixedSize(true);
         getBinding().recyclerView.setAdapter(adapter);
+    }
+
+    private void initTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic("getNotification");
     }
 }

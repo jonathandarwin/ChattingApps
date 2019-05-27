@@ -14,6 +14,7 @@ import com.example.firebaseexample.common.BaseActivity;
 import com.example.firebaseexample.databinding.LoginActivityBinding;
 import com.example.firebaseexample.model.SESSION;
 import com.example.firebaseexample.model.User;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends BaseActivity<LoginActivityBinding, LoginViewModel>
             implements View.OnClickListener{

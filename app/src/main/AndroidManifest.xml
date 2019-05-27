@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.firebaseexample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,10 +19,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".app.signup.SignUpActivity" />
+        <activity android:name=".app.chat.ChatActivity" />
 
-        <activity android:name=".app.signup.SignUpActivity"/>
+        <service
+            android:name=".common.MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
 
-        <activity android:name=".app.chat.ChatActivity"/>
+        <activity android:name=".app.ProfileActivity"
+            android:parentActivityName=".app.chat.ChatActivity"></activity>
     </application>
 
 </manifest>
