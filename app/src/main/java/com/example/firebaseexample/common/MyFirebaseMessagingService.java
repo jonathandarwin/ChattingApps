@@ -37,7 +37,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-//        if(!SESSION.email.equals(remoteMessage.getData().get("email"))){
+        if(!SESSION.email.equals(remoteMessage.getData().get("email"))){
             final Intent intent = new Intent(this, ProfileActivity.class);
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             int notificationID = new Random().nextInt(3000);
@@ -63,13 +63,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setSound(notificationSoundUri)
                     .setContentIntent(pendingIntent);
 
-            //Set notification color to match your app color template
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 notificationBuilder.setColor(getResources().getColor(R.color.colorPrimaryDark));
             }
 
             notificationManager.notify(notificationID, notificationBuilder.build());
-//        }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
